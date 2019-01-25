@@ -1,57 +1,72 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { SmurfPostContext } from "../providers/SmurfPostProvider";
+import "../App.css";
 
-class SmurfForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      age: '',
-      height: ''
-    };
-  }
+function SmurfForm(props) {
+  const { smurfData, setSmurfData } = useContext(SmurfPostContext);
+  const baseUrl = "http://localhost:3333";
 
-  addSmurf = event => {
-    event.preventDefault();
-    // add code to create the smurf using the api
+  const addSmurf = () => {
+    axios
+      .post(`${baseUrl}/smurfs`, {
+        name: smurfName,
+        age: smurfAge,
+        height: smurfHeight,
+        id: Date.now()
+      })
+      .then(res => {
+        props.history.push("/");
+        setSmurfData(res.data);
+        setSmurfAge("");
+        setSmurfHeight("");
+        setSmurfName("");
+      })
+      .catch(err => console.log(err));
+  };
+  const [smurfName, setSmurfName] = useState("");
+  const [smurfAge, setSmurfAge] = useState("");
+  const [smurfHeight, setSmurfHeight] = useState("");
 
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    });
-  }
-
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  const handleInputChange = e => {
+    switch (e.target.name) {
+      case "smurfName":
+        setSmurfName(e.target.value);
+        break;
+      case "smurfAge":
+        setSmurfAge(e.target.value);
+        break;
+      case "smurfHeight":
+        setSmurfHeight(e.target.value);
+        break;
+    }
   };
 
-  render() {
-    return (
-      <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
-          <input
-            onChange={this.handleInputChange}
-            placeholder="name"
-            value={this.state.name}
-            name="name"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="age"
-            value={this.state.age}
-            name="age"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="height"
-            value={this.state.height}
-            name="height"
-          />
-          <button type="submit">Add to the village</button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="SmurfForm">
+      <form onSubmit={addSmurf}>
+        <input
+          onChange={handleInputChange}
+          placeholder="enter the smurf's name"
+          value={smurfName}
+          name="smurfName"
+        />
+        <input
+          onChange={handleInputChange}
+          placeholder="enter the smurf's age"
+          value={smurfAge}
+          name="smurfAge"
+        />
+        <input
+          onChange={handleInputChange}
+          placeholder="enter the smurf's height"
+          value={smurfHeight}
+          name="smurfHeight"
+        />
+        <button type="submit">Add to the village</button>
+      </form>
+    </div>
+  );
 }
 
 export default SmurfForm;
