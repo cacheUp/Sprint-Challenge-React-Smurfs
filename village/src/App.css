@@ -88,3 +88,39 @@ h3 {
   margin-top: 25%;
   justify-self: center;
 }
+
+form {
+  display: grid;
+  grid-row-gap: 10%;
+  border: 3px solid #88ccff;
+  height: 400px;
+  width: 300px;
+  padding: 10% 5% 10% 5%;
+  background: #fffdd0;
+  justify-items: center;
+}
+
+input {
+  border: none;
+  height: 30px;
+  font-size: 1.5rem;
+  width: 280px;
+  text-align: center;
+  background: none;
+  border-bottom: 3px solid #88ccff;
+  padding-bottom: 5%;
+  color: #e09c92;
+}
+::placeholder {
+  color: #e09c92;
+}
+
+form button {
+  width: 220px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  height: 40px;
+  border: 2px solid #88ccff;
+  color: #e09c92;
+  background: #88ccff;
+}
