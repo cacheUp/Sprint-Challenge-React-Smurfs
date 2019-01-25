@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { SmurfPostContext } from "../providers/SmurfPostProvider";
 import axios from "axios";
-
+import "../App.css";
 const Smurf = props => {
   const { smurfData, setSmurfData } = useContext(SmurfPostContext);
   const baseUrl = "http://localhost:3333";
@@ -19,9 +19,9 @@ const Smurf = props => {
   };
 
   return (
-    <div className="Smurf">
+    <div className="smurf">
       <h3>{props.name}</h3>
-      <strong>{props.height} tall</strong>
+      <p>{props.height} tall</p>
       <p>{props.age} smurf years old</p>
       <button onClick={e => deleteSmurf(e, props.id)}>Delete</button>
     </div>

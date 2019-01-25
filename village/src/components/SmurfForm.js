@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { SmurfPostContext } from "../providers/SmurfPostProvider";
+import "../App.css";
 
-function SmurfForm() {
+function SmurfForm(props) {
   const { smurfData, setSmurfData } = useContext(SmurfPostContext);
   const baseUrl = "http://localhost:3333";
 
@@ -15,6 +16,7 @@ function SmurfForm() {
         id: Date.now()
       })
       .then(res => {
+        props.history.push("/");
         setSmurfData(res.data);
         setSmurfAge("");
         setSmurfHeight("");

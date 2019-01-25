@@ -14,11 +14,17 @@ function App() {
   return (
     <div className="App">
       {console.log(smurfData)}
-      <NavLink to="/">Home</NavLink>
-      <NavLink exact to="smurf-form">
-        Add Smurf
-      </NavLink>
-      <Route path="/smurf-form" render={props => <SmurfForm {...props} />} />
+      <div className="nav-links">
+        <NavLink className="nav" to="/">
+          Home
+        </NavLink>
+        <NavLink className="nav" exact to="smurf-form">
+          Add Smurf
+        </NavLink>
+      </div>
+      <div className="form-cont">
+        <Route path="/smurf-form" render={props => <SmurfForm {...props} />} />
+      </div>
       <Route exact path="/" component={Smurfs} />
     </div>
   );

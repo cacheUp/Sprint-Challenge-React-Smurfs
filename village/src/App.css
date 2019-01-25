@@ -1,3 +1,90 @@
 .App {
-  text-align: center;
+  display: grid;
+}
+html {
+  background-image: url("index.jpeg");
+  background-size: cover;
+}
+
+.Smurfs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.smurf-cont {
+  display: grid;
+}
+.smurf-cont h1 {
+  justify-self: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.smurf-link {
+  color: black;
+}
+
+h1 {
+  border: 3px solid #88ccff;
+  background: #fffdd0;
+  padding: 2% 10% 2% 10%;
+  color: #e09c92;
+}
+
+.smurf {
+  display: grid;
+  height: 230px;
+  width: 260px;
+  justify-items: center;
+  border: 8px solid #88ccff;
+  margin-top: 10%;
+  padding-bottom: 5%;
+  background: #fffdd0;
+}
+
+.smurf button {
+  justify-self: center;
+  background: #88ccff;
+  color: #e09c92;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 150px;
+}
+.smurf p {
+  justify-self: center;
+
+  color: #00c503;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+h3 {
+  text-decoration: underline;
+  color: #e09c92;
+  font-size: 1.3rem;
+}
+.nav-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+  height: 50px;
+  border-bottom: 1px solid #e09c92;
+  background: #fffdd0;
+  color: #88ccff;
+}
+.nav {
+  color: #e09c92;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.form-cont {
+  display: grid;
+}
+.SmurfForm {
+  display: grid;
+  margin-top: 25%;
+  justify-self: center;
 }
