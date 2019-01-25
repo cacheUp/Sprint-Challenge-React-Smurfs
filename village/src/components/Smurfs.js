@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React, { useContext } from "react";
+import { SmurfPostContext } from "../providers/SmurfPostProvider";
+import Smurf from "./Smurf";
+import { Link } from "react-router-dom";
 
-import Smurf from './Smurf';
-
-class Smurfs extends Component {
-  render() {
-    return (
-      <div className="Smurfs">
-        <h1>Smurf Village</h1>
-        <ul>
-          {this.props.smurfs.map(smurf => {
-            return (
+function Smurfs() {
+  const { smurfData, setSmurfData } = useContext(SmurfPostContext);
+  return (
+    <div className="Smurfs">
+      <h1>Smurf Village</h1>
+      <ul>
+        {smurfData.map(smurf => {
+          return (
+            <Link to={`/smurfs/${smurf.id}`}>
               <Smurf
                 name={smurf.name}
                 id={smurf.id}
@@ -17,16 +19,16 @@ class Smurfs extends Component {
                 height={smurf.height}
                 key={smurf.id}
               />
-            );
-          })}
-        </ul>
-      </div>
-    );
-  }
+            </Link>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 Smurf.defaultProps = {
- smurfs: [],
+  smurfs: []
 };
 
 export default Smurfs;
